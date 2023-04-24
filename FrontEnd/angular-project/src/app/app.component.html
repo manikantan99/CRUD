@@ -1,0 +1,46 @@
+<form [formGroup]="myForm">
+  <fieldset>
+    <legend>Personal Information</legend>
+  <label for="name">Name:</label>
+  <input type="text" id="name" class="align" formControlName="name">
+  <br><br>
+  <label for="email">Email:</label>
+  <input type="email" id="email" class="align" formControlName="email">
+  <br><br>
+  <label for="designation">Designation:</label>
+  <input type="text" id="designation" class="align" formControlName="designation">
+  <br><br>
+  <label for="address">Address:</label>
+  <input type="address" id="address"class="align" formControlName="address">
+  <br><br>
+  <label for="phone_no">Phone No:</label>
+  <input type="phone_no" id="phone_no" class="align" formControlName="phone_no">
+  <br><br>
+  <button type="submit" class="submit" (click)="isEdit ? updateData() : onSubmit()">{{isEdit ? 'Update': 'Save'}}</button>
+  </fieldset>
+</form>
+<br><br>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Designation</th>
+      <th>Address</th>
+      <th>Phone No</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of formData">
+      <td>{{ data.name }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.designation }}</td>
+      <td>{{ data.address }}</td>
+      <td>{{ data.phone_no }}</td>
+      <td>
+      <button (click)="editData(data._id)">Edit</button>
+      <button (click)="removedata(data._id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
